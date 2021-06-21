@@ -1,22 +1,11 @@
-import * as React from 'react';
-import * as ReactDOMServer from 'react-dom/server';
 
-import { App } from 'components/App';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 
-export async function serverRenderer() {
-  const initialData = {
-    appName: 'Reactful',
-  };
+import App from 'components/App';
 
-  const pageData = {
-    title: `Hello ${initialData.appName}`,
-  };
-
+export default async function serverRenderer() {
   return Promise.resolve({
-    initialData,
-    initialMarkup: ReactDOMServer.renderToString(
-      <App initialData={initialData} />,
-    ),
-    pageData,
+    initialMarkup: ReactDOMServer.renderToString(<App />),
   });
 }
